@@ -61,10 +61,15 @@ export default function GameCard({ game, size = "md" }: GameCardProps) {
         </div>
 
         {size !== "sm" && (
-          <button className="mt-3 w-full py-2 rounded-lg text-sm font-semibold bg-[hsl(var(--game-purple))] text-white hover:bg-[hsl(258,90%,72%)] transition-colors flex items-center justify-center gap-2">
+          <a
+            href={game.downloadUrl || "#"}
+            target={game.downloadUrl ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="mt-3 w-full py-2 rounded-lg text-sm font-semibold bg-[hsl(var(--game-purple))] text-white hover:bg-[hsl(258,90%,72%)] transition-colors flex items-center justify-center gap-2"
+          >
             <Icon name="Download" size={14} />
             Скачать
-          </button>
+          </a>
         )}
       </div>
     </div>

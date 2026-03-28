@@ -44,6 +44,17 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            to="/admin"
+            className={`ml-1 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
+              location.pathname === "/admin"
+                ? "bg-[hsl(var(--game-cyan))]/20 text-[hsl(var(--game-cyan))]"
+                : "text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--secondary))]"
+            }`}
+          >
+            <Icon name="Shield" size={14} />
+            Админ
+          </Link>
         </nav>
 
         <button

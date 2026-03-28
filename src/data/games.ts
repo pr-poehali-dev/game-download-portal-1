@@ -11,6 +11,7 @@ export interface Game {
   downloads: number;
   description: string;
   releaseYear: number;
+  downloadUrl?: string;
 }
 
 export const GAMES: Game[] = [

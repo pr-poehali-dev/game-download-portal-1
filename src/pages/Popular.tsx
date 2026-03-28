@@ -2,15 +2,17 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import GameCard from "@/components/GameCard";
 import Icon from "@/components/ui/icon";
-import { GAMES, GENRES } from "@/data/games";
+import { GENRES } from "@/data/games";
+import { useGames } from "@/context/GamesContext";
 
 type SortOption = "downloads" | "rating";
 
 export default function Popular() {
+  const { games } = useGames();
   const [activeGenre, setActiveGenre] = useState("Все");
   const [sortBy, setSortBy] = useState<SortOption>("downloads");
 
-  const filtered = GAMES
+  const filtered = games
     .filter((g) => activeGenre === "Все" || g.genre === activeGenre)
     .sort((a, b) => sortBy === "downloads" ? b.downloads - a.downloads : b.rating - a.rating);
 

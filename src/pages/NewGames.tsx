@@ -2,12 +2,14 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import GameCard from "@/components/GameCard";
 import Icon from "@/components/ui/icon";
-import { GAMES, GENRES } from "@/data/games";
+import { GENRES } from "@/data/games";
+import { useGames } from "@/context/GamesContext";
 
 export default function NewGames() {
+  const { games } = useGames();
   const [activeGenre, setActiveGenre] = useState("Все");
 
-  const newGames = GAMES.filter((g) => g.isNew);
+  const newGames = games.filter((g) => g.isNew);
   const filtered =
     activeGenre === "Все"
       ? newGames

@@ -2,11 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import GameCard from "@/components/GameCard";
 import Icon from "@/components/ui/icon";
-import { GAMES } from "@/data/games";
-
-const featured = GAMES.filter((g) => g.isFeatured);
-const newGames = GAMES.filter((g) => g.isNew).slice(0, 4);
-const popularGames = [...GAMES].sort((a, b) => b.downloads - a.downloads).slice(0, 4);
+import { useGames } from "@/context/GamesContext";
 
 const STATS = [
   { label: "Игр в каталоге", value: "10,000+", icon: "Gamepad2" },
@@ -15,6 +11,11 @@ const STATS = [
 ];
 
 export default function Index() {
+  const { games } = useGames();
+  const featured = games.filter((g) => g.isFeatured);
+  const newGames = games.filter((g) => g.isNew).slice(0, 4);
+  const popularGames = [...games].sort((a, b) => b.downloads - a.downloads).slice(0, 4);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
